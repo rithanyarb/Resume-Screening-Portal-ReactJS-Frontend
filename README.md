@@ -11,7 +11,7 @@ Make sure the following are installed:
 - [Node.js](https://nodejs.org/)
   Nodejs - v18.17.0
 - `npm` (comes with Node.js)
-- Create **.env file** mentioned at 3. Configure Environment
+- Create **.env file** [here](#3-configure-environment).
   
 ## Features
 
