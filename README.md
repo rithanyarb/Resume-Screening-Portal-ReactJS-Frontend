@@ -34,7 +34,7 @@ Make sure the following are installed:
 ## 🔧 Tech Stack
 
 - **Frontend**: React.js, React Router, Axios, Bootstrap (React-Bootstrap)
-- **Backend**: Refer: (link)
+- **Backend**: [Refer](https://github.com/rithanyarb/Resume-Screening-API-Backend)
 
 ---
 
