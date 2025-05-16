@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+# Resume Screening Portal — Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the **React.js frontend** for the Kaay Labs Resume Screening Portal. It allows candidates to register and upload resumes, and enables admins to log in, view registered candidates by job role, process resumes using FAISS + LLM (via FastAPI backend), and view top-matching candidates.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### Prerequisites
 
-### `npm start`
+Make sure the following are installed:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Node.js](https://nodejs.org/)
+  Nodejs - v18.17.0
+- `npm` (comes with Node.js)
+- Create **.env file** [Link Text](###-3.-Configure-Environment).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+### Candidate Portal
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ✅ User Registration
+- ✅ Resume Upload (PDF ≤ 200KB) -PostgresSQL storage limitations 5MB
+- ✅ Select Job Role
 
-### `npm run build`
+### Admin Portal
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- ✅ Admin Login
+- ✅ View Candidates by Job Role
+- ✅ Trigger Resume Screening (FAISS + LLM)
+- ✅ View Top Candidates with ATS Scores
+- ✅ Inline Resume PDF Viewer
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔧 Tech Stack
 
-### `npm run eject`
+- **Frontend**: React.js, React Router, Axios, Bootstrap (React-Bootstrap)
+- **Backend**: Refer: (link)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📁 Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+📂resume-frontend/
+├── public/
+│ └── index.html
+├── src/
+│ ├── components/
+│ │ ├── AdminDashboard.js
+│ │ ├── AdminLogin.js
+│ │ ├── ResumeUpload.js
+│ │ └── UserRegister.js
+│ ├── App.js
+│ ├── api.js
+│ └── index.js
+├── .env
+├── package.json
+├── README.md
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## ⚙️ Getting Started
 
-### Code Splitting
+### 1. Clone the Repo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+git clone https://github.com/your-username/resume_frontend.git
+cd resume_frontend
+```
 
-### Analyzing the Bundle Size
+### 2. Install Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm install
+npx create-react-app resume-frontend
+cd resume-frontend
+```
 
-### Making a Progressive Web App
+### 3. Configure Environment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Create a `.env` file in the root directory:
 
-### Advanced Configuration
+```env
+REACT_APP_API_BASE_URL=http://localhost:8000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+> Replace with your actual FastAPI backend URL.
 
-### Deployment
+### 4. Run the Development Server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm start
+```
 
-### `npm run build` fails to minify
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 🌐 API Endpoints Expected
+
+These are the backend API endpoints this frontend interacts with:
+
+| Endpoint                            | Method | Description                            |
+| ----------------------------------- | ------ | -------------------------------------- |
+| `/user/register/`                   | POST   | Register new user                      |
+| `/user/upload/`                     | POST   | Upload resume and job role             |
+| `/admin/login/`                     | POST   | Admin authentication                   |
+| `/admin/login/users/?role=XYZ`      | GET    | Get users by job role                  |
+| `/admin/login/users/faiss-process/` | GET    | Run FAISS+LLM screening for a job role |
+| `/admin/login/resume/pdf/<user_id>` | GET    | Get resume PDF for selected user       |
+
+---
+
+## Processes my app exhibits
+
+- Register new user and upload resume
+- Admin login and view user list by role
+- Resume screening process works with FAISS+LLM
+- PDFs are viewable inline or in new tab
+
+---
+
+## ✍️ Author
+
+Made with ❤️ by **RB Rithanya**
+
+---
+
+## 📜 License
+
+Free to use for personal and educational purposes.
